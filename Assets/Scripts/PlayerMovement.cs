@@ -31,10 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "StartingLine")
-        {
             Camera.main.GetComponent<Stopwatch>().StartStopwatch(other);
-
-        }
 
         if (other.tag == "Respawn")
             Camera.main.GetComponent<UIPanel>().Lose();

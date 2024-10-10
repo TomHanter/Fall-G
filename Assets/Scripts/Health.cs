@@ -7,7 +7,6 @@ public class Health : MonoBehaviour
 {
     [SerializeField] float maxHp = 100f;
     [SerializeField] UnityEvent die;
-    [SerializeField] UnityEvent<float> hpChanged;
     [SerializeField] UnityEvent<float> hpChangedPercent;
 
     private float currentHp;
@@ -17,7 +16,6 @@ public class Health : MonoBehaviour
         set
         {
             currentHp = value;
-            hpChanged?.Invoke(currentHp);
             hpChangedPercent?.Invoke(currentHp / maxHp);
 
             if (currentHp <= 0)
