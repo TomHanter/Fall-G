@@ -6,13 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jump = 10f;
-    Rigidbody rb;
-    Vector3 moveVector;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jump = 10f;
+    private Rigidbody rb;
+    private Stopwatch stopWatch;
+    private UIPanel uIPanel;
+    private Vector3 moveVector;
 
     private void Awake()
     {
+        stopWatch = Camera.main.GetComponent<Stopwatch>();
+        uIPanel = Camera.main.GetComponent<UIPanel>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -30,18 +34,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "StartingLine")
-            Camera.main.GetComponent<Stopwatch>().StartStopwatch(other);
-
-        if (other.tag == "Respawn")
-            Camera.main.GetComponent<UIPanel>().Lose();
-
-        if (other.tag == "Finish")
+        switch (other.tag)
         {
-            Camera.main.GetComponent<UIPanel>().Win();
-            Camera.main.GetComponent<Stopwatch>().StopStopwatch(other);
+            case "StartingLine":
+                stopWatch.StartStopwatch(other);
+                break;
+            case "Respawn":
+                uIPanel.Lose();
+                break;
+            case "Finish":
+                uIPanel.Win();
+                stopWatch.StopStopwatch(other);
+                break;
         }
-
     }
-
 }

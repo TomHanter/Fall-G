@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class Stopwatch : MonoBehaviour
 {
-    bool stopwatchActive = false;
-    float currentTime;
-    [SerializeField] TMP_Text currentTimeText;
+    private bool stopwatchActive = false;
+    private float currentTime;
+    [SerializeField] private TMP_Text currentTimeText;
 
     private void Start()
     {

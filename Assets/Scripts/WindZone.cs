@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WindZone : MonoBehaviour
 {
-    [SerializeField] float windForce = 1f;
-    [SerializeField] float delayDiraction = 2f;
-    [SerializeField] float afterTime = 2f;
+    [SerializeField] private float windForce = 1f;
+    [SerializeField] private float delayDiraction = 2f;
+    [SerializeField] private float afterTime = 2f;
+
     private void Start()
     {
         InvokeRepeating(nameof(RotateZone), afterTime, delayDiraction);
@@ -14,7 +15,7 @@ public class WindZone : MonoBehaviour
 
     private void RotateZone()
     {
-        transform.eulerAngles = new Vector3(0, Random.Range(-360f, 360f), 0);
+        transform.eulerAngles = new Vector3(0, Random.Range(-360f, 361f), 0);
     }
 
     private void OnTriggerStay(Collider other)

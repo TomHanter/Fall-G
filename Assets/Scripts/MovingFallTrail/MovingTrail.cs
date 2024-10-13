@@ -8,5 +8,6 @@ using UnityEngine;
 public abstract class MovingTrail : MonoBehaviour
 {
     public abstract void Move();
+
 }
 

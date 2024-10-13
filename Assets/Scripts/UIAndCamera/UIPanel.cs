@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIPanel : MonoBehaviour
 {
-    [SerializeField] GameObject panelWin;
-    [SerializeField] GameObject panelLose;
+    [SerializeField] private GameObject panelWin;
+    [SerializeField] private GameObject panelLose;
 
     public void Win()
     {

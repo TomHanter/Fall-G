@@ -1,17 +1,19 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class DamageAble : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<float> damageGot;
+   [SerializeField] private UnityEvent<float> damageGot;
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.TryGetComponent<Attacker>(out var attacker))
         {
-           damageGot?.Invoke(attacker._damage);
+            damageGot?.Invoke(attacker._damage);
         }
     }
 }

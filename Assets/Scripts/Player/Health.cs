@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] float maxHp = 100f;
-    [SerializeField] UnityEvent die;
-    [SerializeField] UnityEvent<float> hpChangedPercent;
+    [SerializeField] private float maxHp = 100f;
+    [SerializeField] private UnityEvent die;
+    [SerializeField] private UnityEvent<float> hpChangedPercent;
 
     private float currentHp;
     public float HP
